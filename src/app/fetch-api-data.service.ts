@@ -15,7 +15,7 @@ const userName = localStorage.getItem('username');
   providedIn: 'root'
 })
 
-export class UserRegistrationService {
+export class FetchApiDataService {
  // Inject the HttpClient module to the constructor params
  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) { }
@@ -156,7 +156,7 @@ public editUser(updateDetails: any): Observable<any> {
     } else {
       console.log(error);
       console.error(
-        `Error Status cose ${error.status}, ` +
+        `Error Status cose ${error.status}` +
         `Error body is: ${error.error}`);
     }
     return throwError(() => new Error('Something bad happended; please try again later.')
