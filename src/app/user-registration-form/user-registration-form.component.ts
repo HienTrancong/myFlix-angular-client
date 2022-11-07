@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserRegistrationFormComponent implements OnInit {
 
-  //the @Input decorator that defines the component’s input
+  //the @Input decorator that defines the component’s input, which bind to ngModel in html
   @Input() userData = { Username:'', Password:'', Email:'', Birthday:'' };
 
   constructor(
