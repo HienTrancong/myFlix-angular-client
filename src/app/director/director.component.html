@@ -2,11 +2,22 @@
   <mat-card-title class="director-dialog-title">
     {{ data.Name }}
   </mat-card-title>
-
-  Birthday: {{ data.Birth | date }}
   <br />
-  <br />
-  <mat-card-content>
-    {{ data.Bio }}
-  </mat-card-content>
+  <mat-dialog-content class="director-dialog-content">
+    <b>Birthday: </b>{{ data.Birth | date }}
+    <br />
+    <br />
+    <b>Bio: </b>{{ data.Bio }}
+  </mat-dialog-content>
+  <mat-card-actions class="director-actions">
+    <button
+      class="director-close-button"
+      mat-stroked-button
+      aria-label="Close the director details button"
+      mat-dialog-close
+      color="primary"
+    >
+      X
+    </button>
+  </mat-card-actions>
 </mat-card>

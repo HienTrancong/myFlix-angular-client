@@ -1,6 +1,6 @@
-<mat-card>
+<mat-card class="editprofile-card">
   <mat-card-header class="editprofile-card-header">
-    <mat-card-title>Edit profile</mat-card-title>
+    <mat-card-title class="editprofile-card-title">Edit profile</mat-card-title>
   </mat-card-header>
   <mat-card-content class="editprofile-card-content">
     <form>
@@ -11,6 +11,7 @@
           placeholder="Username"
           type="text"
           name="Username"
+          required
         />
       </mat-form-field>
       <mat-form-field>
@@ -20,6 +21,7 @@
           placeholder="Password"
           type="password"
           name="Password"
+          required
         />
       </mat-form-field>
       <mat-form-field>
@@ -29,6 +31,7 @@
           placeholder="Email"
           type="Email"
           name="Email"
+          required
         />
       </mat-form-field>
       <mat-form-field>
@@ -38,13 +41,25 @@
           placeholder="Birthday"
           type="date"
           name="Birthday"
+          required
         />
       </mat-form-field>
     </form>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions class="editprofile-actions">
     <button mat-raised-button color="primary" (click)="editUser()">
-      Confirm
+      Confirm update
     </button>
   </mat-card-actions>
+  <mat-card-actions class="editprofile-close-actions">
+    <button
+      class="editprofile-close-button"
+      mat-stroked-button
+      aria-label="Button to close the edit profile dialog"
+      mat-dialog-close
+      color="primary"
+    >
+      X
+    </button></mat-card-actions
+  >
 </mat-card>

@@ -7,7 +7,7 @@ import { synopsisComponent } from '../synopsis/synopsis.component';
 
 // Dialog model
 import { MatDialog } from '@angular/material/dialog'
-import { BinaryOperator } from '@angular/compiler';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -20,6 +20,7 @@ export class MovieCardComponent implements OnInit {
   //declare variable movies as an array
   movies: any[] = [];
   favoriteMovies: any[] = [];
+
   constructor( 
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog
@@ -28,6 +29,7 @@ export class MovieCardComponent implements OnInit {
   //similarto componentdidmount, when component created, immediately call getMovies function
   ngOnInit(): void {
     this.getMovies();
+    this.getFavoriteMovies();
   }
 
   getMovies(): void {
@@ -36,6 +38,35 @@ export class MovieCardComponent implements OnInit {
       console.log(this.movies);
       return this.movies;
     });
+  }
+
+  getFavoriteMovies(): void {
+    console.log('here');
+    this.fetchApiData.getUser().subscribe((response: any) => {
+      this.favoriteMovies = response.FavoriteMovies;
+      console.log(this.favoriteMovies);
+      return this.favoriteMovies;
+    });
+  }
+
+  isFav(id: string): boolean {
+    return this.favoriteMovies.includes(id);
+  }
+  
+  addToFavoriteMovies(id: string) {
+    console.log(id);
+    this.fetchApiData.addFavoriteMovie(id).subscribe((response) => {
+      console.log(response);
+      this.ngOnInit();
+    })
+  }
+
+  removeFromFavoriteMovies(id: string) {
+    console.log(id);
+    this.fetchApiData.removeFavoriteMovie(id).subscribe((response) => {
+      console.log(response);
+      this.ngOnInit();
+    })
   }
 
   openDirectorDialog(name: string, bio: string, birthday: string): void {
